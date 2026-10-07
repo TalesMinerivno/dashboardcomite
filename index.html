@@ -51,7 +51,7 @@ button:hover{transform:translateY(-1px);background:#E1EBE9}
 button:disabled{cursor:not-allowed;opacity:.65;transform:none}
 .primary{background:var(--verde);color:#fff}
 .primary:hover{background:var(--verde-hover)}
-.msg{margin-top:11px;color:var(--sucesso);font-weight:700}
+.msg{margin-top:11px;color:var(--sucesso);font-weight:700;white-space:pre-line}.input-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:10px 0}.input-tools label{font-weight:700;color:var(--verde-escuro)}select{margin-left:7px;padding:9px 12px;border:1px solid #BFD5D2;border-radius:999px;background:#fff;color:var(--texto)}.file-button{display:inline-flex;align-items:center;padding:10px 16px;border-radius:999px;background:#EDF3F2;cursor:pointer}.file-button:hover{background:#E1EBE9}
 .error{color:var(--alerta)}
 .dash{display:none;margin-top:18px;padding:26px 30px}
 .capture-panel{background:#fff}
@@ -67,7 +67,7 @@ button:disabled{cursor:not-allowed;opacity:.65;transform:none}
 .kv{margin:10px 0 6px;color:var(--verde-escuro);font-size:31px;line-height:1.05;font-weight:900}
 .kpi.alert .kv{color:var(--alerta-escuro)}
 .ks{min-height:21px;color:var(--texto-suave);font-size:12px;line-height:1.35}
-.critical{display:inline-block;margin-top:5px;padding:4px 8px;border:1px solid #F0C5C5;border-radius:5px;background:var(--alerta-suave);color:var(--alerta-escuro);font-size:9px;font-weight:900;letter-spacing:.06em}
+.status{display:inline-block;margin-top:5px;padding:4px 8px;border-radius:5px;font-size:9px;font-weight:900;letter-spacing:.06em}.status.danger{border:1px solid #F0C5C5;background:var(--alerta-suave);color:var(--alerta-escuro)}.status.success{border:1px solid #BFE3D3;background:#EAF8F2;color:var(--sucesso)}.status.warning{border:1px solid #F3D5A4;background:#FFF7E8;color:var(--atencao)}.status.neutral{border:1px solid #D8E5E3;background:#F4F6F5;color:var(--texto-suave)}.kpi.danger{border-top-color:var(--alerta)}.kpi.danger .kv{color:var(--alerta-escuro)}.kpi.success{border-top-color:var(--sucesso)}.kpi.warning{border-top-color:var(--atencao)}.kpi.warning .kv{color:#A75A05}.empty-row td{text-align:center!important;color:var(--texto-suave);padding:28px!important}.critical{display:inline-block;margin-top:5px;padding:4px 8px;border:1px solid #F0C5C5;border-radius:5px;background:var(--alerta-suave);color:var(--alerta-escuro);font-size:9px;font-weight:900;letter-spacing:.06em}
 .card{width:100%;border:1px solid var(--linha);border-radius:14px;background:#fff;overflow:hidden}
 .cardhead{padding:15px 18px 12px;border-bottom:1px solid var(--linha);background:#fff}
 .cardhead h3{font-size:21px;font-weight:700}
@@ -102,23 +102,30 @@ tr:hover td{background:#EEF7F5}
 .ppt-stage #capture .kl{font-size:15px!important;line-height:1.05!important}
 .ppt-stage #capture .kv{margin:6px 0 3px!important;font-size:36px!important;line-height:1!important}
 .ppt-stage #capture .ks{min-height:15px!important;font-size:14px!important;line-height:1.08!important}
-.ppt-stage #capture .critical{margin-top:2px!important;padding:3px 7px!important;font-size:10px!important}
+.ppt-stage #capture .status,.ppt-stage #capture .critical{margin-top:2px!important;padding:3px 7px!important;font-size:10px!important}
 .ppt-stage #capture .card{flex:1 1 auto!important;min-height:0!important;display:flex!important;flex-direction:column!important;overflow:hidden!important}
 .ppt-stage #capture .cardhead{flex:0 0 62px!important;height:62px!important;padding:8px 17px 6px!important;overflow:hidden!important}
 .ppt-stage #capture .cardhead h3{margin:0 0 3px!important;font-size:25px!important;line-height:1.05!important}
 .ppt-stage #capture .cardhead .muted{font-size:14px!important;line-height:1.05!important}
 .ppt-stage #capture .cardhead::after{height:2px!important;margin-top:4px!important}
 .ppt-stage #capture .tablewrap{flex:1 1 auto!important;min-height:0!important;display:block!important;overflow:hidden!important}
-.ppt-stage #capture table{width:100%!important;height:100%!important;border-collapse:collapse!important;font-size:15px!important}
+.ppt-stage #capture table{width:100%!important;height:auto!important;border-collapse:collapse!important;font-size:15px!important;table-layout:fixed!important}
 .ppt-stage #capture thead,.ppt-stage #capture thead tr{height:34px!important}
-.ppt-stage #capture tbody{height:calc(100% - 34px)!important}
-.ppt-stage #capture tbody tr{height:10%!important}
+.ppt-stage #capture tbody{height:auto!important}
+.ppt-stage #capture tbody tr{height:48px!important}
 .ppt-stage #capture th{height:34px!important;padding:5px 9px!important;font-size:14px!important;line-height:1!important;vertical-align:middle!important}
-.ppt-stage #capture td{padding:3px 9px!important;font-size:15px!important;line-height:1.02!important;vertical-align:middle!important;overflow:hidden!important}
+.ppt-stage #capture th:nth-child(1){width:7%!important}
+.ppt-stage #capture th:nth-child(2){width:21%!important}
+.ppt-stage #capture th:nth-child(3){width:10%!important}
+.ppt-stage #capture th:nth-child(4){width:29%!important}
+.ppt-stage #capture th:nth-child(5),.ppt-stage #capture th:nth-child(6),.ppt-stage #capture th:nth-child(7){width:11%!important}
+.ppt-stage #capture .tablewrap{background:linear-gradient(#fff,#fff)!important}
+.ppt-stage #capture td{padding:3px 9px!important;font-size:15px!important;line-height:1.02!important;vertical-align:middle!important;overflow:hidden!important;white-space:nowrap!important;text-overflow:ellipsis!important}
 .ppt-stage #capture td .muted{margin-top:1px!important;font-size:12px!important;line-height:1!important}
 .ppt-stage #capture .rank{width:29px!important;height:29px!important;font-size:13px!important}
 .ppt-stage #capture .voltage{min-width:34px!important;padding:3px 7px!important;font-size:11px!important}
 .ppt-stage #capture .foot{flex:0 0 22px!important;height:22px!important;margin:3px 0 0!important;padding:4px 0 0!important;font-size:11px!important;line-height:1!important;overflow:hidden!important}
+.committee-switch{display:none;margin-top:18px;padding:18px 24px}.committee-switch .switch-title{font-size:13px;font-weight:900;color:var(--verde-escuro);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}.committee-switch .buttons{margin:0}.committee-switch button.active{background:var(--verde);color:#fff}.committee-note{margin-top:10px;color:var(--texto-suave);font-size:12px}
 @media(max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.wrap{padding:0 8px 20px}.head{margin:0 -8px;padding:16px;align-items:flex-start}.brand,.head,.title{flex-direction:column}.brand{align-items:flex-start}.logo-light{width:82px;height:70px}.input,.dash{padding:18px}.kpis{grid-template-columns:1fr}.foot{flex-direction:column}.title h2{font-size:24px}}
 @media print{.input,.buttons{display:none!important}.dash{display:block!important}.panel{box-shadow:none}}
@@ -132,37 +139,57 @@ tr:hover td{background:#EEF7F5}
 </header>
 <section class="panel input">
   <h2>Colar dados da planilha</h2>
-  <p class="muted">Compatível com dados separados por TAB ou ponto e vírgula. Datas com AM/PM são interpretadas no padrão mês/dia/ano.</p>
+  <p class="muted">Cole dados do Excel ou carregue um arquivo CSV/TXT. O sistema aceita TAB, ponto e vírgula e vírgula, respeitando campos entre aspas.</p>
+  <div class="input-tools">
+    <label>Formato das datas
+      <select id="dateFormat" aria-label="Formato das datas">
+        <option value="auto">Automático</option>
+        <option value="dmy">DD/MM/AAAA</option>
+        <option value="mdy">MM/DD/AAAA</option>
+      </select>
+    </label>
+    <label class="file-button" for="fileInput">Selecionar CSV/TXT</label>
+    <input id="fileInput" type="file" accept=".csv,.txt,text/csv,text/plain" hidden>
+    <span id="fileName" class="muted">Nenhum arquivo selecionado</span>
+  </div>
   <textarea id="input" placeholder="Cole o cabeçalho e os registros separados por TAB..."></textarea>
-  <div class="buttons"><button class="primary" onclick="generate()">Gerar Top 10</button><button onclick="clearAll()">Limpar</button></div>
-  <div id="msg" class="msg"></div>
+  <div class="buttons"><button id="generateBtn" class="primary" onclick="generate()">Gerar Top 10</button><button onclick="clearAll()">Limpar</button></div>
+  <div id="msg" class="msg" role="status" aria-live="polite"></div>
+</section>
+<section id="committeeSwitch" class="panel committee-switch">
+  <div class="switch-title">Selecione a visão do comitê</div>
+  <div class="buttons">
+    <button id="btnEXP" class="primary active" onclick="setArea('EXP')">Expansão | EXP-</button>
+    <button id="btnMAN" onclick="setArea('MAN')">Manutenção | MAN-</button>
+  </div>
+  <div id="committeeNote" class="committee-note"></div>
 </section>
 <section id="dashCHI" class="panel dash">
  <div id="captureCHI" class="capture-panel">
-  <div class="title"><div><h2>Visão executiva | CHI</h2><div class="muted">Priorização dos maiores impactos operacionais</div></div><span id="periodCHI" class="pill">Período: —</span></div>
+  <div class="title"><div><h2 id="titleCHI">Visão executiva | CHI</h2><div id="subtitleCHI" class="muted">Casos executados acima do planejado</div></div><span id="periodCHI" class="pill">Período: —</span></div>
   <div id="summaryCHI" class="summary"></div>
   <div class="kpis">
    <div class="kpi"><div class="kl">CHI planejado</div><div id="chiPlan" class="kv">0</div><div class="ks">Base total planejada</div></div>
-   <div class="kpi alert"><div class="kl">CHI executado</div><div id="chiExec" class="kv">0</div><div id="chiExecSub" class="ks"></div><span class="critical">ATENÇÃO</span></div>
-   <div class="kpi"><div class="kl">Desvio de CHI</div><div id="chiDelta" class="kv">0</div><div id="chiDeltaSub" class="ks"></div></div>
+   <div id="chiExecCard" class="kpi"><div class="kl">CHI executado</div><div id="chiExec" class="kv">0</div><div id="chiExecSub" class="ks"></div><span id="chiStatus" class="status neutral">AGUARDANDO</span></div>
+   <div id="chiDeltaCard" class="kpi"><div class="kl">Desvio de CHI</div><div id="chiDelta" class="kv">0</div><div id="chiDeltaSub" class="ks"></div></div>
    <div class="kpi"><div class="kl">Maior CHI executado</div><div id="chiMax" class="kv">0</div><div id="chiMaxSub" class="ks"></div><span class="critical">TOP 1</span></div>
   </div>
-  <article class="card"><div class="cardhead"><h3>Top 10 | CHI executado</h3><div class="muted">Ranking pelo maior CHI executado</div></div><div class="tablewrap"><table><thead><tr><th>#</th><th>PI / Responsável</th><th>Tensão</th><th>Conjunto crítico</th><th class="num">Plan.</th><th class="num">Exec.</th><th class="num">Variação</th></tr></thead><tbody id="chiBody"></tbody></table></div></article>
+  <article class="card"><div class="cardhead"><h3 id="rankTitleCHI">Top 10 | Variação positiva de CHI</h3><div class="muted">Somente PIs com CHI executado acima do planejado</div></div><div class="tablewrap"><table><thead><tr><th>#</th><th>PI / Responsável</th><th>Tensão</th><th>Conjunto crítico</th><th class="num">Plan.</th><th class="num">Exec.</th><th class="num">Variação</th></tr></thead><tbody id="chiBody"></tbody></table></div></article>
   <div class="foot"><span>Light • Fonte: planilha de programação</span><span id="stampCHI"></span></div>
  </div>
  <div class="buttons" style="justify-content:flex-end"><button class="primary" onclick="pngCHI()">Baixar visão CHI | PNG HD</button></div>
 </section>
 <section id="dashFIN" class="panel dash">
  <div id="captureFIN" class="capture-panel">
-  <div class="title"><div><h2>Visão executiva | Compensação Financeira</h2><div class="muted">Priorização dos maiores impactos financeiros</div></div><span id="periodFIN" class="pill">Período: —</span></div>
+  <div class="title"><div><h2 id="titleFIN">Visão executiva | Compensação financeira</h2><div id="subtitleFIN" class="muted">Priorização dos casos de maior valor executado</div></div><span id="periodFIN" class="pill">Período: —</span></div>
   <div id="summaryFIN" class="summary"></div>
   <div class="kpis">
    <div class="kpi"><div class="kl">Compensação planejada</div><div id="finPlan" class="kv">R$ 0,00</div><div class="ks">Base total planejada</div></div>
-   <div class="kpi alert"><div class="kl">Compensação executada</div><div id="finExec" class="kv">R$ 0,00</div><div id="finExecSub" class="ks"></div><span class="critical">ATENÇÃO</span></div>
+   <div id="finExecCard" class="kpi"><div class="kl">Compensação executada</div><div id="finExec" class="kv">R$ 0,00</div><div id="finExecSub" class="ks"></div><span id="finStatus" class="status neutral">AGUARDANDO</span></div>
    <div class="kpi"><div class="kl">Custo não planejado</div><div id="finUnplanned" class="kv">R$ 0,00</div><div id="finUnplannedSub" class="ks"></div></div>
    <div class="kpi"><div class="kl">Maior compensação</div><div id="finMax" class="kv">R$ 0,00</div><div id="finMaxSub" class="ks"></div><span class="critical">TOP 1</span></div>
   </div>
-  <article class="card"><div class="cardhead"><h3>Top 10 | Compensação financeira</h3><div class="muted">Ranking pela maior compensação executada</div></div><div class="tablewrap"><table><thead><tr><th>#</th><th>PI / Responsável</th><th>Tensão</th><th>Conjunto crítico</th><th class="num">Plan.</th><th class="num">Exec.</th><th class="num">Variação</th></tr></thead><tbody id="finBody"></tbody></table></div></article>
+  <article class="card"><div class="cardhead"><h3 id="rankTitleFIN">Top 10 | Compensação financeira</h3><div class="muted">Ranking pela maior compensação executada</div></div><div class="tablewrap"><table><thead><tr><th>#</th><th>PI / Responsável</th><th>Tensão</th><th>Conjunto crítico</th><th class="num">Plan.</th><th class="num">Exec.</th><th class="num">Variação</th></tr></thead><tbody id="finBody"></tbody></table></div></article>
   <div class="foot"><span>Light • Fonte: planilha de programação</span><span id="stampFIN"></span></div>
  </div>
  <div class="buttons" style="justify-content:flex-end"><button class="primary" onclick="pngFIN()">Baixar visão financeira | PNG HD</button></div>
@@ -171,76 +198,76 @@ tr:hover td{background:#EEF7F5}
 <script>
 'use strict';
 let rows=[];
+let activeArea='EXP';
 const $=id=>document.getElementById(id);
-const norm=x=>String(x??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+const norm=x=>String(x??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim().replace(/\s+/g,' ');
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const isFilled=value=>String(value??'').trim()!=='';
 function num(value){
- const original=String(value??'').trim();
- if(!original)return 0;
+ const original=String(value??'').trim(); if(!original)return 0;
  const negative=/^\(.*\)$/.test(original)||/^\s*-/.test(original);
- let s=original.replace(/[()]/g,'').replace(/R\$/gi,'').replace(/[^0-9,.-]/g,'').replace(/-/g,'');
- if(!s)return 0;
+ let s=original.replace(/[()]/g,'').replace(/R\$/gi,'').replace(/[^0-9,.-]/g,'').replace(/-/g,''); if(!s)return 0;
  const comma=s.lastIndexOf(','),dot=s.lastIndexOf('.');
- if(comma>=0&&dot>=0){
-  if(comma>dot)s=s.replace(/\./g,'').replace(',','.');
-  else s=s.replace(/,/g,'');
- }else if(comma>=0){
-  const parts=s.split(',');
-  if(parts.length>2)s=parts.slice(0,-1).join('')+'.'+parts.at(-1);
-  else s=parts[0]+'.'+(parts[1]||'0');
- }else if(dot>=0){
-  const parts=s.split('.');
-  if(parts.length>2){
-   const last=parts.at(-1);
-   s=last.length===3?parts.join(''):parts.slice(0,-1).join('')+'.'+last;
-  }
- }
- const n=Number(s);
- return Number.isFinite(n)?(negative?-n:n):0;
+ // O CSV exportado utiliza ponto como separador decimal, inclusive com 3 casas (ex.: 45.751 = 45,751).
+ // Com os dois separadores presentes, o último é considerado decimal e o anterior, milhar.
+ if(comma>=0&&dot>=0){if(comma>dot)s=s.replace(/\./g,'').replace(',','.');else s=s.replace(/,/g,'');}
+ else if(comma>=0){const parts=s.split(',');s=parts.length>2?parts.slice(0,-1).join('')+'.'+parts.at(-1):parts[0]+'.'+(parts[1]||'0');}
+ else if(dot>=0){const parts=s.split('.');s=parts.length>2?parts.slice(0,-1).join('')+'.'+parts.at(-1):s;}
+ const n=Number(s); return Number.isFinite(n)?(negative?-n:n):0;
 }
 const money=x=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(x);
 const nfmt=x=>new Intl.NumberFormat('pt-BR',{maximumFractionDigits:3}).format(x);
 const pct=(e,p)=>p?(e-p)/p*100:(e?null:0);
 const pf=x=>x===null?'Não planejado':`${x>0?'+':''}${x.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}%`;
-function parseDate(value){const s=String(value??'').trim();if(!s)return null;let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(AM|PM)?)?$/i);if(m){let a=+m[1],b=+m[2],y=+m[3],h=+(m[4]||0),mi=+(m[5]||0),sec=+(m[6]||0),ap=(m[7]||'').toUpperCase(),day,month;if(ap){month=a-1;day=b;if(ap==='PM'&&h<12)h+=12;if(ap==='AM'&&h===12)h=0}else if(a>12){day=a;month=b-1}else if(b>12){month=a-1;day=b}else{day=a;month=b-1}const d=new Date(y,month,day,h,mi,sec);return d.getFullYear()===y&&d.getMonth()===month&&d.getDate()===day?d:null}m=s.match(/^(\d{4})-(\d{2})-(\d{2})/);return m?new Date(+m[1],+m[2]-1,+m[3]):null}
-function period(values){const dates=values.map(parseDate).filter(Boolean).sort((a,b)=>a-b);if(!dates.length)return'Período não identificado';const f=d=>d.toLocaleDateString('pt-BR'),a=dates[0],b=dates.at(-1);return a.toDateString()===b.toDateString()?`Período: ${f(a)}`:`Período: ${f(a)} a ${f(b)}`}
-function ix(headers,...names){return headers.findIndex(v=>names.some(n=>v.includes(norm(n))))}
-function message(text,error=false){$('msg').textContent=text;$('msg').className='msg'+(error?' error':'')}
-function generate(){
- const lines=$('input').value.trim().split(/\r?\n/).filter(Boolean);if(lines.length<2)return message('Cole o cabeçalho e pelo menos um registro.',true);
- const delimiter=lines[0].includes('\t')?'\t':';',headers=lines[0].split(delimiter).map(norm);
- const I={r:ix(headers,'responsavel'),pi:headers.indexOf('pi'),v:ix(headers,'niveis de tensao','nivel de tensao','tensao'),c:ix(headers,'conjunto critico','conjunto crítico','conjunto crit','conjunto'),cp:ix(headers,'chi planejado'),ce:ix(headers,'chi executado'),fp:ix(headers,'comp. financ. planej','comp financ planej'),fe:ix(headers,'comp. financ. execut','comp financ execut'),di:ix(headers,'prev. inicio interrup','prev. inicio'),ri:ix(headers,'inicio da interrupcao'),df:ix(headers,'prev. fim interrup','prev. fim'),rf:ix(headers,'termino da interrupcao')};
- const missing=[['PI',I.pi],['CHI Executado',I.ce],['Comp. Financ. Execut.',I.fe]].filter(x=>x[1]<0).map(x=>x[0]);if(missing.length)return message('Cabeçalhos não encontrados: '+missing.join(', '),true);
- rows=lines.slice(1).map(line=>{const c=line.split(delimiter),g=i=>i>=0?(c[i]||'').trim():'',cp=num(g(I.cp)),ce=num(g(I.ce)),fp=num(g(I.fp)),fe=num(g(I.fe));return{r:g(I.r)||'Não informado',pi:g(I.pi)||'—',v:(g(I.v)||'—').toUpperCase(),c:g(I.c)||'—',cp,ce,cd:ce-cp,cv:pct(ce,cp),fp,fe,fd:fe-fp,fv:pct(fe,fp),dates:[g(I.di),g(I.ri),g(I.df),g(I.rf)].filter(Boolean)}}).filter(r=>r.pi!=='—'||r.ce||r.fe);
- if(!rows.length)return message('Nenhum registro válido.',true);render();const totalCHI=rows.reduce((a,r)=>a+r.ce,0),totalFIN=rows.reduce((a,r)=>a+r.fe,0);message(`${rows.length} registros processados. Conferência: CHI executado ${nfmt(totalCHI)} | Compensação executada ${money(totalFIN)}.`)
-}
+const moneyDelta=x=>x>0?`+ ${money(x)}`:x<0?`- ${money(Math.abs(x))}`:money(0);
+function detectDelimiter(text){const first=(text.split(/\r?\n/)[0]||'');const candidates=['\t',';',','];return candidates.map(d=>({d,n:parseDelimited(first,d)[0]?.length||0})).sort((a,b)=>b.n-a.n)[0].d;}
+function parseDelimited(text,delimiter){const data=[];let row=[],field='',quoted=false;for(let i=0;i<text.length;i++){const ch=text[i],next=text[i+1];if(ch==='"'){if(quoted&&next==='"'){field+='"';i++;}else quoted=!quoted;}else if(ch===delimiter&&!quoted){row.push(field);field='';}else if((ch==='\n'||ch==='\r')&&!quoted){if(ch==='\r'&&next==='\n')i++;row.push(field);if(row.some(v=>v.trim()!==''))data.push(row);row=[];field='';}else field+=ch;}row.push(field);if(row.some(v=>v.trim()!==''))data.push(row);return data;}
+function parseDate(value){const s=String(value??'').trim();if(!s)return null;let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(AM|PM)?)?$/i);if(m){let a=+m[1],b=+m[2],y=+m[3],h=+(m[4]||0),mi=+(m[5]||0),sec=+(m[6]||0),ap=(m[7]||'').toUpperCase(),day,month;const mode=$('dateFormat').value;if(ap||mode==='mdy'){month=a-1;day=b;}else if(mode==='dmy'){day=a;month=b-1;}else if(a>12){day=a;month=b-1;}else if(b>12){month=a-1;day=b;}else{day=a;month=b-1;}if(ap==='PM'&&h<12)h+=12;if(ap==='AM'&&h===12)h=0;const d=new Date(y,month,day,h,mi,sec);return d.getFullYear()===y&&d.getMonth()===month&&d.getDate()===day?d:null;}m=s.match(/^(\d{4})-(\d{2})-(\d{2})/);if(!m)return null;const d=new Date(+m[1],+m[2]-1,+m[3]);return Number.isNaN(d.getTime())?null:d;}
+function period(values){const dates=values.map(parseDate).filter(Boolean).sort((a,b)=>a-b);if(!dates.length)return'Período não identificado';const f=d=>d.toLocaleDateString('pt-BR'),a=dates[0],b=dates.at(-1);return a.toDateString()===b.toDateString()?`Período: ${f(a)}`:`Período: ${f(a)} a ${f(b)}`;}
+function ix(headers,...names){return headers.findIndex(v=>names.some(n=>v===norm(n)||v.includes(norm(n))));}
+function message(text,error=false){$('msg').textContent=text;$('msg').className='msg'+(error?' error':'');$('msg').setAttribute('role',error?'alert':'status');}
+function setStatus(cardId,statusId,kind,text){const card=$(cardId),status=$(statusId);card.classList.remove('danger','success','warning');card.classList.add(kind);status.className=`status ${kind}`;status.textContent=text;}
+async function generate(){const btn=$('generateBtn');btn.disabled=true;btn.textContent='Processando dados...';message('Processando...');await new Promise(r=>setTimeout(r,20));try{
+ const text=$('input').value.trim();if(!text)return message('Cole os dados ou selecione um arquivo CSV/TXT.',true);
+ const delimiter=detectDelimiter(text),matrix=parseDelimited(text,delimiter);if(matrix.length<2)return message('Cole o cabeçalho e pelo menos um registro.',true);
+ const headers=matrix[0].map(norm);
+ const I={r:ix(headers,'responsavel','responsável','nome responsavel'),pi:ix(headers,'pi','numero do pi','número do pi','nº pi','num pi','codigo pi','código pi'),v:ix(headers,'niveis de tensao','nivel de tensao','tensão'),c:ix(headers,'conjunto critico','conjunto crítico','conjunto crit','conjunto'),cp:ix(headers,'chi planejado','chi plan'),ce:ix(headers,'chi executado','chi exec'),fp:ix(headers,'comp. financ. planej','comp financ planej','compensacao planejada','compensação planejada'),fe:ix(headers,'comp. financ. execut','comp financ execut','compensacao executada','compensação executada'),di:ix(headers,'prev. inicio interrup','prev. inicio'),ri:ix(headers,'inicio da interrupcao','início da interrupção'),df:ix(headers,'prev. fim interrup','prev. fim'),rf:ix(headers,'termino da interrupcao','término da interrupção')};
+ const required=[['PI',I.pi],['CHI Executado',I.ce],['Comp. Financ. Execut.',I.fe]].filter(x=>x[1]<0).map(x=>x[0]);if(required.length)return message('Cabeçalhos obrigatórios não encontrados: '+required.join(', '),true);
+ const recommended=[['Responsável',I.r],['Tensão',I.v],['Conjunto crítico',I.c],['CHI Planejado',I.cp],['Compensação Planejada',I.fp],['Datas do período',Math.max(I.di,I.ri,I.df,I.rf)]].filter(x=>x[1]<0).map(x=>x[0]);
+ rows=matrix.slice(1).map(c=>{const g=i=>i>=0?(c[i]||'').trim():'',cpRaw=g(I.cp),fpRaw=g(I.fp),cp=num(cpRaw),ce=num(g(I.ce)),fp=num(fpRaw),fe=num(g(I.fe));return{r:g(I.r)||'Não informado',pi:g(I.pi)||'—',v:(g(I.v)||'—').toUpperCase(),c:g(I.c)||'—',cp,cpInformado:isFilled(cpRaw),ce,cd:ce-cp,cv:pct(ce,cp),fp,fpInformado:isFilled(fpRaw),fe,fd:fe-fp,fv:pct(fe,fp),dates:[g(I.di),g(I.ri),g(I.df),g(I.rf)].filter(Boolean)}}).filter(r=>r.pi!=='—'||r.ce||r.fe);
+ if(!rows.length)return message('Nenhum registro válido foi encontrado.',true);render();const allDates=rows.flatMap(r=>r.dates),validDates=allDates.filter(v=>parseDate(v)).length,totalCHI=rows.reduce((a,r)=>a+r.ce,0),totalFIN=rows.reduce((a,r)=>a+r.fe,0);let info=`${rows.length} registros processados. CHI executado: ${nfmt(totalCHI)} | Compensação executada: ${money(totalFIN)}.`;if(allDates.length)info+=` Datas reconhecidas: ${validDates} de ${allDates.length}.`;if(recommended.length)info+=`\nAtenção: colunas recomendadas não identificadas: ${recommended.join(', ')}.`;message(info,recommended.length>0);
+ }catch(e){console.error(e);message('Não foi possível processar os dados: '+e.message,true);}finally{btn.disabled=false;btn.textContent='Gerar Top 10';}}
+function areaRows(){return rows.filter(r=>norm(r.r).startsWith(activeArea.toLowerCase()+'-'));}
+function setArea(area){activeArea=area==='MAN'?'MAN':'EXP';$('btnEXP').classList.toggle('active',activeArea==='EXP');$('btnEXP').classList.toggle('primary',activeArea==='EXP');$('btnMAN').classList.toggle('active',activeArea==='MAN');$('btnMAN').classList.toggle('primary',activeArea==='MAN');render();}
 function render(){
- const sum=k=>rows.reduce((a,r)=>a+(Number.isFinite(r[k])?r[k]:0),0),cp=sum('cp'),ce=sum('ce'),fp=sum('fp'),fe=sum('fe');
- const unplanned=rows.filter(r=>r.fp===0&&r.fe>0),unplannedValue=unplanned.reduce((a,r)=>a+r.fe,0);
- const topCHI=[...rows].sort((a,b)=>b.ce-a.ce||b.cd-a.cd).slice(0,10),topFIN=[...rows].sort((a,b)=>b.fe-a.fe||b.fd-a.fd).slice(0,10);
- const p=period(rows.flatMap(r=>r.dates)),stamp='Gerado em '+new Date().toLocaleString('pt-BR');
- $('periodCHI').textContent=p;$('periodFIN').textContent=p;$('stampCHI').textContent=stamp;$('stampFIN').textContent=stamp;
- $('chiPlan').textContent=nfmt(cp);$('chiExec').textContent=nfmt(ce);$('chiExecSub').textContent=`Variação relativa: ${pf(pct(ce,cp))}`;
- const chiDelta=ce-cp;$('chiDelta').textContent=`${chiDelta>0?'+':''}${nfmt(chiDelta)}`;$('chiDeltaSub').textContent=chiDelta>0?'Executado acima do planejado':chiDelta<0?'Executado abaixo do planejado':'Executado igual ao planejado';
- $('chiMax').textContent=nfmt(topCHI[0].ce);$('chiMaxSub').textContent=`PI ${topCHI[0].pi}`;
- const topChi=topCHI[0],topChiDelta=topChi.ce-topChi.cp,topChiStatus=topChi.cp===0?'sem CHI planejado':topChiDelta>0?`acima do planejado em ${nfmt(topChiDelta)}`:topChiDelta<0?`abaixo do planejado em ${nfmt(Math.abs(topChiDelta))}`:'igual ao planejado';
- $('summaryCHI').innerHTML=`<b>Leitura gerencial:</b> o PI <b>${esc(topChi.pi)}</b>, do conjunto crítico <b>${esc(topChi.c)}</b>, ocupa a primeira posição com CHI executado de <b>${nfmt(topChi.ce)}</b>, frente ao CHI planejado de <b>${nfmt(topChi.cp)}</b>. O resultado está <b>${topChiStatus}</b>.`;
- $('finPlan').textContent=money(fp);$('finExec').textContent=money(fe);$('finExecSub').textContent=`Variação relativa: ${pf(pct(fe,fp))}`;
- $('finUnplanned').textContent=money(unplannedValue);$('finUnplannedSub').textContent=`${unplanned.length} PI(s) sem valor planejado`;
- $('finMax').textContent=money(topFIN[0].fe);$('finMaxSub').textContent=`PI ${topFIN[0].pi}`;
- const topFin=topFIN[0],topFinDelta=topFin.fe-topFin.fp,topFinStatus=topFin.fp===0?'sem compensação planejada':topFinDelta>0?`acima do planejado em ${money(topFinDelta)}`:topFinDelta<0?`abaixo do planejado em ${money(Math.abs(topFinDelta))}`:'igual ao planejado';
- $('summaryFIN').innerHTML=`<b>Leitura gerencial:</b> o PI <b>${esc(topFin.pi)}</b>, do conjunto crítico <b>${esc(topFin.c)}</b>, ocupa a primeira posição com compensação executada de <b>${money(topFin.fe)}</b>, frente ao valor planejado de <b>${money(topFin.fp)}</b>. O resultado está <b>${topFinStatus}</b>. Na base completa, o custo sem planejamento totaliza <b>${money(unplannedValue)}</b>.`;
- rank('chiBody',topCHI,'chi');rank('finBody',topFIN,'fin');$('dashCHI').style.display='block';$('dashFIN').style.display='block';
+ const scope=areaRows(),label=activeArea==='EXP'?'Expansão':'Manutenção';
+ $('committeeSwitch').style.display='block';$('committeeNote').textContent=`${scope.length} registro(s) identificado(s) com a sigla ${activeArea}-.`;
+ $('titleCHI').textContent='Visão executiva | CHI';$('titleFIN').textContent='Visão executiva | Compensação financeira';
+ const positiveCHIAll=scope.filter(r=>r.cpInformado&&r.cd>0).sort((a,b)=>b.cd-a.cd||b.cv-a.cv);
+ const positiveFINAll=scope.filter(r=>r.fe>0&&r.fd>0).sort((a,b)=>b.fd-a.fd||b.fe-a.fe);
+ const sum=(data,k)=>data.reduce((a,r)=>a+(Number.isFinite(r[k])?r[k]:0),0),cp=sum(positiveCHIAll,'cp'),ce=sum(positiveCHIAll,'ce'),fp=sum(positiveFINAll,'fp'),fe=sum(positiveFINAll,'fe');
+ const unplanned=positiveFINAll.filter(r=>!r.fpInformado),unplannedValue=unplanned.reduce((a,r)=>a+r.fe,0);
+ const positiveCHI=positiveCHIAll.slice(0,10);
+ const topFIN=positiveFINAll.slice(0,10);
+ const positiveCount=positiveCHIAll.length,aboveFIN=positiveFINAll.length;
+ const topCHI=Math.min(positiveCHIAll.length,10),topFINCount=Math.min(positiveFINAll.length,10);
+ $('rankTitleCHI').textContent=`Top ${topCHI} | Variação positiva de CHI`;
+ $('rankTitleFIN').textContent=`Top ${topFINCount} | Compensação financeira`;
+ const positiveTotal=positiveCHI.reduce((a,r)=>a+r.cd,0),topFinShare=fe?topFIN.reduce((a,r)=>a+r.fe,0)/fe*100:0;
+ const p=period(scope.flatMap(r=>r.dates)),stamp='Gerado em '+new Date().toLocaleString('pt-BR');$('periodCHI').textContent=p;$('periodFIN').textContent=p;$('stampCHI').textContent=stamp;$('stampFIN').textContent=stamp;
+ $('chiPlan').textContent=nfmt(cp);$('chiExec').textContent=nfmt(ce);$('chiExecSub').textContent=`Variação relativa: ${pf(pct(ce,cp))}`;const chiDelta=ce-cp;$('chiDelta').textContent=`${chiDelta>0?'+':''}${nfmt(chiDelta)}`;$('chiDeltaSub').textContent=chiDelta>0?'Executado acima do planejado':chiDelta<0?'Executado abaixo do planejado':'Executado igual ao planejado';setStatus('chiExecCard','chiStatus',cp===0&&ce>0?'warning':chiDelta>0?'danger':'success',cp===0&&ce>0?'NÃO PLANEJADO':chiDelta>0?'ACIMA DO PLANEJADO':'DENTRO DO PLANEJADO');$('chiDeltaCard').classList.remove('danger','success','warning');$('chiDeltaCard').classList.add(chiDelta>0?'danger':'success');
+ $('chiMax').textContent=positiveCHI.length?`+${positiveCHI[0].cv.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}%`:'0,00%';$('chiMaxSub').textContent=positiveCHI.length?`PI ${positiveCHI[0].pi}`:'Sem variação positiva';
+ $('summaryCHI').innerHTML=positiveCHI.length?`<b>Leitura gerencial | ${label}:</b> foram identificados <b>${positiveCount} PI(s)</b> com variação positiva de CHI. Entre os ${topCHI} maiores desvios, o acréscimo soma <b>${nfmt(positiveTotal)}</b>. O PI <b>${esc(positiveCHI[0].pi)}</b>, do responsável <b>${esc(positiveCHI[0].r)}</b>, lidera com <b>+${positiveCHI[0].cv.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}%</b>.`:`<b>Leitura gerencial | ${label}:</b> não há casos com variação positiva de CHI no período selecionado.`;
+ $('finPlan').textContent=money(fp);$('finExec').textContent=money(fe);$('finExecSub').textContent=`Variação relativa: ${pf(pct(fe,fp))}`;setStatus('finExecCard','finStatus',fp===0&&fe>0?'warning':fe>fp?'danger':'success',fp===0&&fe>0?'NÃO PLANEJADO':fe>fp?'ACIMA DO PLANEJADO':'DENTRO DO PLANEJADO');$('finUnplanned').textContent=money(unplannedValue);$('finUnplannedSub').textContent=`${unplanned.length} PI(s) com planejamento vazio`;$('finMax').textContent=topFIN.length?money(topFIN[0].fe):money(0);$('finMaxSub').textContent=topFIN.length?`PI ${topFIN[0].pi}`:'Sem compensação executada';
+ $('summaryFIN').innerHTML=topFIN.length?`<b>Leitura gerencial | ${label}:</b> o ranking apresenta exclusivamente os casos em que a compensação financeira executada excedeu a planejada. O Top ${topFINCount} concentra <b>${topFinShare.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})}%</b> do valor da área, com <b>${aboveFIN} PI(s)</b> acima do planejado. O PI <b>${esc(topFIN[0].pi)}</b> lidera com <b>${money(topFIN[0].fe)}</b>.`:`<b>Leitura gerencial | ${label}:</b> não há casos com variação financeira positiva, ou seja, com valor executado maior que o planejado.`;
+ rank('chiBody',positiveCHI,'chi');rank('finBody',topFIN,'fin');$('dashCHI').style.display='block';$('dashFIN').style.display='block';
 }
-function rank(id,data,type){$(id).innerHTML=data.map((r,i)=>{const plan=type==='chi'?nfmt(r.cp):money(r.fp),exec=type==='chi'?nfmt(r.ce):money(r.fe),delta=type==='chi'?r.cd:r.fd,p=type==='chi'?r.cv:r.fv,dt=type==='chi'?`${delta>0?'+':''}${nfmt(delta)}`:`${delta>0?'+':''}${money(delta)}`;const voltage=norm(r.v)==='mt'?'mt':norm(r.v)==='bt'?'bt':'other';return `<tr><td><span class="rank">${i+1}</span></td><td><b>${esc(r.pi)}</b><div class="muted">${esc(r.r)}</div></td><td><span class="voltage ${voltage}">${esc(r.v)}</span></td><td>${esc(r.c)}</td><td class="num">${plan}</td><td class="num"><b>${exec}</b></td><td class="num ${delta>0?'bad':delta<0?'good':''}">${dt}<div class="muted">${pf(p)}</div></td></tr>`}).join('')}
-function clearAll(){$('input').value='';$('dashCHI').style.display='none';$('dashFIN').style.display='none';rows=[];message('')}
-async function exportPanel(captureId,filePrefix,button){
- if(!rows.length)return message('Gere os painéis primeiro.',true);if(typeof html2canvas!=='function')return message('Biblioteca de exportação não carregada. Verifique a conexão.',true);
- const original=button?.textContent||'';if(button){button.textContent='Gerando PNG em alta qualidade...';button.disabled=true}document.body.classList.add('exporting');let stage;
- try{await document.fonts.ready;stage=document.createElement('section');stage.className='ppt-stage';stage.setAttribute('aria-hidden','true');const frame=document.createElement('div');frame.className='ppt-frame';const clone=$(captureId).cloneNode(true);clone.id='capture';frame.append(clone);stage.append(frame);document.body.append(stage);await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));const canvas=await html2canvas(stage,{backgroundColor:'#ffffff',scale:2,width:1888,height:900,windowWidth:1888,windowHeight:900,scrollX:0,scrollY:0,useCORS:true,logging:false,imageTimeout:15000,onclone:doc=>{doc.body.style.margin='0';doc.body.style.background='#fff'}});const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png',1));if(!blob)throw new Error('Falha ao criar o arquivo PNG.');const url=URL.createObjectURL(blob),a=document.createElement('a');a.download=`${filePrefix}_${new Date().toISOString().slice(0,10)}.png`;a.href=url;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);message(`PNG gerado em ${canvas.width} x ${canvas.height} px.`)}catch(error){console.error(error);message('Não foi possível gerar o PNG: '+error.message,true)}finally{stage?.remove();document.body.classList.remove('exporting');if(button){button.disabled=false;button.textContent=original}}
-}
-function pngCHI(){exportPanel('captureCHI','light_top10_CHI_31,54x15,04cm',document.querySelector('button[onclick="pngCHI()"]'))}
-function pngFIN(){exportPanel('captureFIN','light_top10_compensacao_financeira_31,54x15,04cm',document.querySelector('button[onclick="pngFIN()"]'))}
+function rank(id,data,type){if(!data.length){$(id).innerHTML='<tr class="empty-row"><td colspan="7">Não há variações positivas para compor o ranking.</td></tr>';return;}$(id).innerHTML=data.map((r,i)=>{const plan=type==='chi'?nfmt(r.cp):money(r.fp),exec=type==='chi'?nfmt(r.ce):money(r.fe),delta=type==='chi'?r.cd:r.fd,p=type==='chi'?r.cv:r.fv,dt=type==='chi'?`${delta>0?'+':''}${nfmt(delta)}`:moneyDelta(delta),voltage=norm(r.v)==='mt'?'mt':norm(r.v)==='bt'?'bt':'other';return `<tr><td><span class="rank">${i+1}</span></td><td><b>${esc(r.pi)}</b><div class="muted">${esc(r.r)}</div></td><td><span class="voltage ${voltage}">${esc(r.v)}</span></td><td title="${esc(r.c)}">${esc(r.c)}</td><td class="num">${plan}</td><td class="num"><b>${exec}</b></td><td class="num ${delta>0?'bad':delta<0?'good':''}">${dt}<div class="muted">${pf(p)}</div></td></tr>`}).join('');}
+function clearAll(){if(($('input').value.trim()||rows.length)&&!confirm('Deseja limpar os dados e os painéis gerados?'))return;$('input').value='';$('fileInput').value='';$('fileName').textContent='Nenhum arquivo selecionado';$('dashCHI').style.display='none';$('dashFIN').style.display='none';$('committeeSwitch').style.display='none';rows=[];message('');}
+$('fileInput').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{$('input').value=await file.text();$('fileName').textContent=file.name;message(`Arquivo ${file.name} carregado. Clique em Gerar Top 10.`);}catch(err){message('Não foi possível ler o arquivo selecionado.',true);}});
+async function exportPanel(captureId,filePrefix,button){if(!rows.length)return message('Gere os painéis primeiro.',true);if(typeof html2canvas!=='function')return message('Biblioteca de exportação não carregada. Verifique a conexão ou disponibilize html2canvas.min.js localmente.',true);const original=button?.textContent||'';if(button){button.textContent='Gerando PNG em alta qualidade...';button.disabled=true}document.body.classList.add('exporting');let stage;try{await document.fonts.ready;stage=document.createElement('section');stage.className='ppt-stage';stage.setAttribute('aria-hidden','true');const frame=document.createElement('div');frame.className='ppt-frame';const clone=$(captureId).cloneNode(true);clone.id='capture';frame.append(clone);stage.append(frame);document.body.append(stage);await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));const canvas=await html2canvas(stage,{backgroundColor:'#ffffff',scale:2,width:1888,height:900,windowWidth:1888,windowHeight:900,scrollX:0,scrollY:0,useCORS:true,logging:false,imageTimeout:15000,onclone:doc=>{doc.body.style.margin='0';doc.body.style.background='#fff'}});const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png',1));if(!blob)throw new Error('Falha ao criar o arquivo PNG.');const url=URL.createObjectURL(blob),a=document.createElement('a');a.download=`${filePrefix}_${new Date().toISOString().slice(0,10)}.png`;a.href=url;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);message(`PNG gerado em ${canvas.width} x ${canvas.height} px.`);}catch(error){console.error(error);message('Não foi possível gerar o PNG: '+error.message,true);}finally{stage?.remove();document.body.classList.remove('exporting');if(button){button.disabled=false;button.textContent=original}}}
+function pngCHI(){exportPanel('captureCHI',`Comite_${activeArea}_Variacao_Positiva_CHI`,document.querySelector('button[onclick="pngCHI()"]'));}
+function pngFIN(){exportPanel('captureFIN',`Comite_${activeArea}_Compensacao_Financeira`,document.querySelector('button[onclick="pngFIN()"]'));}
 </script>
 </body>
 </html>
